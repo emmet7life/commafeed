@@ -77,20 +77,18 @@
 			<plugin>
 				<groupId>org.apache.openejb.maven</groupId>
 				<artifactId>tomee-maven-plugin</artifactId>
-				<version>1.5.2</version>
+				<version>1.6.0</version>
 				<configuration>
 					<tomeeVersion>1.6.0</tomeeVersion>
 					<tomeeClassifier>plus</tomeeClassifier>
 					<tomeeHttpPort>8082</tomeeHttpPort>
-					<args>-Xmx1024m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled</args>
+					<args>-Xmx1024m -XX:MaxPermSize=512m -XX:+CMSClassUnloadingEnabled -javaagent:springloaded-1.2.0.RELEASE.jar -noverify</args>
 					<config>${project.basedir}/src/main/tomee/conf</config>
-					<reloadOnUpdate>true</reloadOnUpdate>
+					<reloadOnUpdate>false</reloadOnUpdate>
 					<synchronization>
 						<updateInterval>1</updateInterval>
-						<extensions>
-							<extension>.class</extension>
-						</extensions>
 						<updateOnlyExtensions>
+							<updateOnlyExtension>.class</updateOnlyExtension>
 							<updateOnlyExtension>.properties</updateOnlyExtension>
 							<updateOnlyExtension>.html</updateOnlyExtension>
 							<updateOnlyExtension>.js</updateOnlyExtension>
